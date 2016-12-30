@@ -3,9 +3,9 @@
 var fs        = require('fs');
 var path      = require('path');
 var Sequelize = require('sequelize');
-var basename  = path.basename(module.filename);
-var env       = process.env.NODE_ENV || 'development';
-var config    = require(__dirname + '/../config/config.json')[env];
+var basename  = path.basename(module.filename);//#
+var env       = process.env.NODE_ENV || 'development';//?
+var config    = require(__dirname + '/../config/config.json')[env];//#
 var db        = {};
 
 if (config.use_env_variable) {
@@ -15,18 +15,18 @@ if (config.use_env_variable) {
 }
 
 fs
-  .readdirSync(__dirname)
-  .filter(function(file) {
+  .readdirSync(__dirname) // read all files in 'models' folder
+  .filter(function(file) { // then get all js file names (!= index, this file)
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(function(file) {
-    var model = sequelize['import'](path.join(__dirname, file));
+    var model = sequelize['import'](path.join(__dirname, file)); // import models (schemas) files, like normal import
     db[model.name] = model;
   });
 
 Object.keys(db).forEach(function(modelName) {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
+  if (db[modelName].associate) { // check if model has associate function
+    db[modelName].associate(db); // run that associate function with main model db
   }
 });
 
