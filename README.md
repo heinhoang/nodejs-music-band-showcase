@@ -12,9 +12,10 @@
 4. open 'mysql.exe' in '..\mysql\bin' (or run `mysql-ctl cli` to go into mysql cli if you use c9.io)
 5. run `sudo mysql` (or `mysql -u youruser -p yourpassword`) to sigin sql
 6. create a new database `CREATE DATABASE mvc_mysql_app;` then `Ctr + C` to exit mysql
-7. `sudo sequelize db:migrate --migrations-path config/migrations` to insert data on Mysql
-8. signin to mysql (like step #5), run `use mvc_mysql_app;` then run `show tables;` to show tables which we migrated
-9. run `npm start` to start server
+7. reconfig './config/config.json' file.
+8. `sudo sequelize db:migrate --migrations-path config/migrations` to insert data on Mysql
+9. signin to mysql (like step #5), run `use mvc_mysql_app;` then run `show tables;` to show tables which we migrated (or use [sequelpro](http://www.sequelpro.com/) for that
+10. run `npm start` to start server
 
 ##References##
 - For c9.io
